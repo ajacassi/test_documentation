@@ -1,0 +1,14 @@
+site_name: test documentation title
+
+theme:
+  name: "material"
+
+plugins:
+  - mkdocstrings
+
+nav:
+  - Main Code: index.md
+  - tutorial.md
+  - Guide: how-to-guides.md
+  - reference.md
+  - explanatino.md

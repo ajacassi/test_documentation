@@ -1,3 +1,6 @@
+import pandas
+
+
 def mok_text(var1: int, var2: str, **kwargs) -> list:
     """
     testo della prima funzione
@@ -26,6 +29,24 @@ def mok_text(var1: int, var2: str, **kwargs) -> list:
         currency (str, optional): additional filter
         state_province (str, optional): additional filter
         status (str, optional): additional filter
+
+    Example:
+        mok_text(1, 'ciao') = [1, 'ciao']
+
+    Returns:
+        rspense (List): risposta
+    """
+
+    return [var1, var2]
+
+
+def mok_text_test(var1: int, var2: str, **kwargs) -> list:
+    """
+    testo della prima funzione
+
+    Args:
+        var1 (int): intero prima var
+        var2 (int): intero seconda var
 
     Example:
         mok_text(1, 'ciao') = [1, 'ciao']

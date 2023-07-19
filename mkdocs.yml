@@ -1,14 +1,81 @@
 site_name: test documentation title
+site_description: description del sito
+site_url: https://www.google.it
 
 theme:
-  name: "material"
+  name: material
+  features:
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.tooltips
+#    - navigation.tabs
+#    - navigation.tabs.sticky
+    - navigation.sections
+#    - navigation.path
+    - navigation.top
+    - navigation.expand
+    - content.code.annotate
+    - content.code.copy
+    - content.code.select
+#    - toc.integrate
+    - toc.follow
+    - header.autohide
+
+  language: en
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+      primary: orange
+      accent: purple
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+      primary: orange
+      accent: lime
+
+repo_name: test_documentation
+repo_url: https://github.com/ajacassi/test_documentation.git
 
 plugins:
   - mkdocstrings
+  - search
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.mark
+  - attr_list
 
 nav:
-  - Main Code: index.md
-  - tutorial.md
-  - Guide: how-to-guides.md
-  - reference.md
-  - explanatino.md
+  - index.md
+  - Installation: installation.md
+  - User Guide: user_guide.md
+  - Developer Guide: dev_guide.md
+  - XA information: info.md
+  - API:
+      - mok_doc:
+        - mok_content: mok_doc.mok_content
+        - mok_content2: mok_doc.mok_content2
+        - first_level:
+          - postprocess: mok_doc.first_level.postprocess
+          - preprocess: mok_doc.first_level.preprocess
+          - second_level:
+            - analitics: mok_doc.first_level.second_level.analitics
+        - first_level_second:
+          - api: mok_doc.first_level_second.api
+          - errors_hand: mok_doc.first_level_second.errors_hand
+
+copyright:
+  mit

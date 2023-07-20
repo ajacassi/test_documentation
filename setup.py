@@ -2,13 +2,13 @@ from setuptools import find_packages, setup
 
 
 # version go
-requests = 'requests==2.28.1'
 pandas = 'pandas==2.0.0'
+requests = 'requests==2.28.1'
 # version end
 
 # start
 requires_dict = {
-'mok_doc': [requests, pandas],
+'mok_doc': [pandas, requests],
 'mok_doc.__init__': [],
 'mok_doc.first_level.__init__': [],
 'mok_doc.first_level.postprocess': [],
@@ -20,6 +20,7 @@ requires_dict = {
 'mok_doc.first_level_second.errors_hand': [],
 'mok_doc.mok_content': [pandas],
 'mok_doc.mok_content2': [requests],
+'mok_doc.version': [],
 }
 # stop
 

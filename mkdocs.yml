@@ -68,6 +68,7 @@ nav:
       - mok_doc:
         - mok_content: mok_doc.mok_content
         - mok_content2: mok_doc.mok_content2
+        - version: mok_doc.version
         - first_level:
           - postprocess: mok_doc.first_level.postprocess
           - preprocess: mok_doc.first_level.preprocess

@@ -1,0 +1,42 @@
+name: Create Tag on Version Change
+
+on:
+  push:
+    branches:
+      - master
+      - main
+
+jobs:
+  create_tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Read version from file
+        id: get_version
+        run: echo ::set-output name=VERSION::$(cat mok_doc/version.py | grep -oP "(?<=version = ')[^']*")
+
+      - name: Get current tag
+        id: get_current_tag
+        run: echo ::set-output name=TAG::$(git describe --abbrev=0)
+
+      - name: Check if version has changed
+        id: version_changed
+        run: |
+          PREVIOUS_TAG=${{ steps.get_current_tag.outputs.TAG }}
+          CURRENT_VERSION=${{ steps.get_version.outputs.VERSION }}
+          if [ "$PREVIOUS_TAG" != "$CURRENT_VERSION" ]; then
+            echo "Version has changed. New version is $CURRENT_VERSION"
+            echo ::set-output name=VERSION_CHANGED::true
+          else
+            echo "Version has not changed."
+            echo ::set-output name=VERSION_CHANGED::false
+          fi
+
+      - name: Create new tag
+        if: ${{ steps.version_changed.outputs.VERSION_CHANGED == 'true' }}
+        run: |
+          TAG_NAME=${{ steps.get_version.outputs.VERSION }}
+          git tag $TAG_NAME
+          git push origin $TAG_NAME

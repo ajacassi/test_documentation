@@ -1,0 +1,1 @@
+::: mok_doc.version
